@@ -13,15 +13,15 @@ def loginPage(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            username = request.POST['username']
+            email = request.POST['email']
             password = request.POST['password']
 
-            user = authenticate(request, username = username, password = password)
+            user = authenticate(request, username = email, password = password)
 
             if user is not None:
                 login(request, user)
                 return redirect('mainPage')
-            else: print("Username OR password is incorrect")
+            else: print("Email OR password is incorrect")
     else: form = UserCreationForm()
 
     return render(request, 'pages/login-register-page.html', {'page': page, 'form': form})
