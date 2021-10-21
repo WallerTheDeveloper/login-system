@@ -1,0 +1,20 @@
+{% block content %}
+    {% if page == 'login' %}
+        <title>Log In</title>
+        <form action = "" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit">
+        <a href="{% url 'registerPage' %}"><br>Don't have account yet?<br></a>
+        <a href="{% url 'mainPage' %}">Go back</a>
+        </form>
+    {% else %}
+        <form method="POST" action = "">
+            {% csrf_token %}
+            {{form.as_p}}
+        <input type="submit">
+        <a href="{% url 'loginPage' %}"><br>Already have account?<br></a>
+        <a href="{% url 'mainPage' %}">Go back</a>
+    </form>
+    {% endif %}
+{% endblock content %}
